@@ -42,9 +42,17 @@ public class BankApp {
             switch(choice) {
                 case 1:{
                     System.out.print("Enter account number: ");
-                    int id = input.nextInt();
-                    System.out.printf("Account #%d has balance: %f%n", 
+                    int id = -1;
+                    try{
+                         id = input.nextInt();
+                         System.out.printf("Account #%d has balance: %f%n", 
                            id-1, accounts[id-1].getBalance());
+                    }catch(InputMismatchException e){
+                        input.nextLine();
+                        System.out.println("Please use \033[0;1mdigits\033[0m");
+
+                    }
+                    
                     break;
                 }
                 case 2: {
